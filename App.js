@@ -23,37 +23,13 @@ const instructions = Platform.select({
 
 type Props = {};
 export default class App extends Component<Props> {
-  onPress() {
-    Alert.alert(
-      'Alert Title',
-      'My Alert Msg',
-      [
-        {text: 'Ask me later', onPress: () => console.log('Ask me later pressed')},
-        {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-        {text: 'OK', onPress: () => console.log('OK Pressed')},
-      ],
-      { cancelable: false }
-    )
-  }
 
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to Platzi Music!
-        </Text>
-        <Button
-          onPress={this.onPress}
-          title="Learn More"
-          color="#841584"
-          accessibilityLabel="Learn more about this purple button"
-        />
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
+        <View style={[styles.box, styles.red]} />
+        <View style={[styles.box, styles.green]} />
+        <View style={[styles.box, styles.blue]} />
       </View>
     );
   }
@@ -62,18 +38,31 @@ export default class App extends Component<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    flexDirection: 'row',
+    //justifyContent: 'center',
+    //justifyContent: 'space-between',
+    //justifyContent: 'space-around',
+    //alignItems: 'center',
     backgroundColor: '#F5FCFF',
+    flexWrap: 'wrap'
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  box: {
+    //width: 100,
+    width: 150,
+    height: 200,
+    backgroundColor: 'black',
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  red: {
+    //flex: 2,
+    //alignSelf: 'flex-end',
+    backgroundColor: 'red',
   },
+  green: {
+    flex: 1,
+    backgroundColor: 'green',
+  },
+  blue: {
+    backgroundColor: 'blue',
+    //alignSelf: 'flex-start',
+  }
 });
