@@ -8,13 +8,9 @@ import React, { Component } from 'react';
 import {
   Platform,
   StyleSheet,
-  Text,
   View,
-  Image,
-  ScrollView,
 } from 'react-native';
-import { Icon } from 'react-native-elements';
-import ArtistBox from './ArtistBox';
+import ArtistList from './ArtistList';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -25,23 +21,19 @@ const instructions = Platform.select({
 
 type Props = {};
 export default class App extends Component<Props> {
-  render() {
-
+  render() {    
     const artist = {
       image: 'https://lastfm-img2.akamaized.net/i/u/300x300/31a51f6e3ec647c8997150ec837891c7.png',
       name: 'David Brownie',
       likes: 2000,
       comments: 140,
     }
-    
+    const artists = Array(500).fill(artist)
+
     return (
-      <ScrollView style={styles.container}>
-        {
-          Array(500).fill(artist).map(artist => {
-            return <ArtistBox artist={artist} />
-          })
-        }
-      </ScrollView>
+      <View style={styles.container}>
+        <ArtistList artists={artists} />
+      </View>
     );
   }
 }
