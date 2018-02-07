@@ -11,24 +11,21 @@ import {
   View,
 } from 'react-native';
 import ArtistList from './ArtistList';
-
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+import { getArtists } from './api-client'
 
 type Props = {};
 export default class App extends Component<Props> {
+
+  state = {
+    artists: []
+  }
+
+  componentDidMount() {
+    getArtists().then(data => this.setState({ artists: data }))
+  }
+
   render() {    
-    const artist = {
-      image: 'https://lastfm-img2.akamaized.net/i/u/300x300/31a51f6e3ec647c8997150ec837891c7.png',
-      name: 'David Brownie',
-      likes: 2000,
-      comments: 140,
-    }
-    const artists = Array(500).fill(artist)
+    const artists = this.state.artists
 
     return (
       <View style={styles.container}>
