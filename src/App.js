@@ -13,7 +13,7 @@ import {
 
 import { Router, Stack, Scene } from 'react-native-router-flux';
 
-//import LoginView from './LoginView';
+import LoginView from './LoginView';
 import HomeView from './HomeView';
 import ArtistDetailView from './ArtistDetailView';
 
@@ -24,7 +24,7 @@ export default class App extends Component {
     return (
       <Router>
         <Stack key="root">
-          {/*<Scene key="login" component={LoginView} hideNavBar/>*/}
+          {<Scene key="login" component={LoginView} hideNavBar/>}
           <Scene key="home" component={HomeView} hideNavBar/>
           <Scene key="artistDetail" component={ArtistDetailView} hideNavBar={isAndroid} />
         </Stack>
