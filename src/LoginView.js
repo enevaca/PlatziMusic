@@ -24,8 +24,8 @@ import firebase, { firebaseAuth } from "./firebase";
 export default class LoginView extends Component {
 
   state = {
-    email: '', 
-    password: '',
+    email: 'evaca@hola.com', 
+    password: '123456',
     isLoggedIn: false,
   }
 
@@ -47,6 +47,7 @@ export default class LoginView extends Component {
     firebaseAuth.signInWithEmailAndPassword(email, password).then(() => {
         // Sign-out successful.
         this.setState({ email, password, isLoggedIn: true })
+        this.handleNext()
       }).catch(function(error) {
         // Handle Errors here.
         var errorCode = error.code;

@@ -17,6 +17,10 @@ import LoginView from './LoginView';
 import HomeView from './HomeView';
 import ArtistDetailView from './ArtistDetailView';
 
+console.ignoreYellowBox = [
+  'Setting a timer'
+]
+
 export default class App extends Component {
   render() {    
     const isAndroid = Platform.OS === 'android'
