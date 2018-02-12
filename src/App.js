@@ -23,14 +23,14 @@ console.ignoreYellowBox = [
 
 export default class App extends Component {
   render() {    
-    const isAndroid = Platform.OS === 'android'
+    //const isAndroid = Platform.OS === 'android'
 
     return (
       <Router>
         <Stack key="root">
           {<Scene key="login" component={LoginView} hideNavBar/>}
           <Scene key="home" component={HomeView} hideNavBar/>
-          <Scene key="artistDetail" component={ArtistDetailView} hideNavBar={isAndroid} />
+          <Scene key="artistDetail" component={ArtistDetailView} title="Comentarios" hideNavBar={false} />
         </Stack>
       </Router>
     );
