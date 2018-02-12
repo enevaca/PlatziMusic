@@ -10,6 +10,7 @@ function getArtists() {
 				key: artist.mbid,
 				name: artist.name,
 				image: artist.image[3]['#text'],
+				url: artist.url,
 				likes: 200,
 				comments: 140,
 			}

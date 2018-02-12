@@ -1,0 +1,84 @@
+ 2018-02-12 11:34:10 ⌚  noel-pc in ~/Documentos/platzi/PlatziMusic
+± |master ✓| → keytool -genkey -v -keystore platzimusic.keystore -alias platzimusic-release -keyalg RSA -keysize 2048 -validity 10000
+Introduzca la contraseña del almacén de claves:  
+Volver a escribir la contraseña nueva: 
+¿Cuáles son su nombre y su apellido?
+  [Unknown]:  Noel Vaca       
+¿Cuál es el nombre de su unidad de organización?
+  [Unknown]:  Curso de React Native
+¿Cuál es el nombre de su organización?
+  [Unknown]:  Platzi
+¿Cuál es el nombre de su ciudad o localidad?
+  [Unknown]:  Sucre
+¿Cuál es el nombre de su estado o provincia?
+  [Unknown]:  Bolivia
+¿Cuál es el código de país de dos letras de la unidad?
+  [Unknown]:  BO
+¿Es correcto CN=Noel Vaca, OU=Curso de React Native, O=Platzi, L=Sucre, ST=Bolivia, C=BO?
+  [no]:  si
+
+Generando par de claves RSA de 2.048 bits para certificado autofirmado (SHA256withRSA) con una validez de 10.000 días
+	para: CN=Noel Vaca, OU=Curso de React Native, O=Platzi, L=Sucre, ST=Bolivia, C=BO
+Introduzca la contraseña de clave para <platzimusic-release>
+	(INTRO si es la misma contraseña que la del almacén de claves):  
+[Almacenando platzimusic.keystore]
+
+Warning:
+El almacén de claves JKS utiliza un formato propietario. Se recomienda migrar a PKCS12, que es un formato estándar del sector que utiliza "keytool -importkeystore -srckeystore platzimusic.keystore -destkeystore platzimusic.keystore -deststoretype pkcs12".
+
+ 2018-02-12 11:39:22 ⌚  noel-pc in ~/Documentos/platzi/PlatziMusic
+± |master ✓| → ls
+android  appicon  app.json  generate_key.txt  index.js  ios  node_modules  package.json  package-lock.json  platzimusic.keystore  src  __tests__  yarn.lock
+
+ 2018-02-12 11:42:23 ⌚  noel-pc in ~/Documentos/platzi/PlatziMusic
+± |master ?:1 ✗| → mv platzimusic.keystore android/app/
+
+ 2018-02-12 11:43:37 ⌚  noel-pc in ~/Documentos/platzi/PlatziMusic
+± |master ?:1 ✗| → vim ~/.gradle/gradle.properties 
+
+ 2018-02-12 11:47:37 ⌚  noel-pc in ~/Documentos/platzi/PlatziMusic
+± |master ?:1 ✗| → cat ~/.gradle/gradle.properties 
+org.gradle.daemon=false
+PLATZI_RELEASE_STORE_FILE=platzimusic.keystore
+PLATZI_RELEASE_KEY_ALIAS=platzimusic-release
+PLATZI_RELEASE_STORE_PASSWORD=android
+PLATZI_RELEASE_KEY_PASSWORD=android
+
+ 2018-02-12 11:47:44 ⌚  noel-pc in ~/Documentos/platzi/PlatziMusic
+± |master ?:1 ✗| → 
+
+Luego de configurar en Android Studio
+ 2018-02-12 12:12:16 ⌚  noel-pc in ~/Documentos/platzi/PlatziMusic/android
+± |master U:1 ?:1 ✗| → cd android && ./gradlew assembleRelease
+
+ 2018-02-12 13:12:40 ⌚  noel-pc in ~/Documentos/platzi/PlatziMusic/android
+± |master U:130 ?:1 ✗| → vim gradle.properties 
+
+ 2018-02-12 13:13:31 ⌚  noel-pc in ~/Documentos/platzi/PlatziMusic/android
+± |master U:130 ?:1 ✗| → cat gradle.properties 
+# Project-wide Gradle settings.
+
+# IDE (e.g. Android Studio) users:
+# Gradle settings configured through the IDE *will override*
+# any settings specified in this file.
+
+# For more details on how to configure your build environment visit
+# http://www.gradle.org/docs/current/userguide/build_environment.html
+
+# Specifies the JVM arguments used for the daemon process.
+# The setting is particularly useful for tweaking memory settings.
+# Default value: -Xmx10248m -XX:MaxPermSize=256m
+# org.gradle.jvmargs=-Xmx2048m -XX:MaxPermSize=512m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8
+
+# When configured, Gradle will run in incubating parallel mode.
+# This option should only be used with decoupled projects. More details, visit
+# http://www.gradle.org/docs/current/userguide/multi_project_builds.html#sec:decoupled_projects
+# org.gradle.parallel=true
+
+android.useDeprecatedNdk=true
+android.enableAapt2=false
+
+ 2018-02-12 13:13:39 ⌚  noel-pc in ~/Documentos/platzi/PlatziMusic/android
+± |master U:130 ?:1 ✗| → 
+ 2018-02-12 13:13:39 ⌚  noel-pc in ~/Documentos/platzi/PlatziMusic/android
+± |master U:130 ?:1 ✗| → ./gradlew assembleRelease

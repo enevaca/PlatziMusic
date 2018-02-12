@@ -15,6 +15,7 @@ import {
 } from 'react-native';
 import { Icon } from 'react-native-elements';
 import { firebaseDatabase, firebaseAuth } from './firebase';
+import Share, { ShareSheet, Button } from 'react-native-share';
 
 export default class ArtistBox extends Component {
   state = {
@@ -38,7 +39,15 @@ export default class ArtistBox extends Component {
           liked: artist.likes && artist.likes[uid]
         })
       }
-    })
+    });
+    this.getArtistCommentsRef().on('value', snapshot => {
+      const comment = snapshot.val()
+      if (comment) {
+        this.setState({
+          commentCount: snapshot.numChildren() //Object.keys(comment).length
+        })
+      }
+    });
   }
 
   handlePress = () => {
@@ -48,6 +57,11 @@ export default class ArtistBox extends Component {
   getArtistRef() {
     const { key } = this.props.artist
     return firebaseDatabase.ref(`artist/${key}`)
+  }
+
+  getArtistCommentsRef() {
+    const { key } = this.props.artist
+    return firebaseDatabase.ref(`comments/${key}`)
   }
 
   toggleLike = (liked) => {
@@ -74,6 +88,20 @@ export default class ArtistBox extends Component {
     });
   }
 
+  handleShared = () => {
+    const { url, name } = this.props.artist
+    let shareOptions = {
+      title: name,
+      message: "Platzi Music Noel",
+      url: url,
+      subject: "Compartir Artista"
+    }
+
+    Share.shareSingle(Object.assign(shareOptions, {
+      "social": "email"
+    }))
+  }
+
   render() {
     //console.warn(this.props.artist.name)
     const { image, name, likes, comments} = this.props.artist
@@ -81,7 +109,7 @@ export default class ArtistBox extends Component {
       <Icon name='ios-heart' type='ionicon' size={30} color="#e74c3c" /> :
       <Icon name='ios-heart-outline' type='ionicon' size={30} color="gray" />
 
-    const { likeCount } = this.state
+    const { likeCount, commentCount } = this.state
 
     return (
       <View style={styles.artistBox} >
@@ -97,7 +125,13 @@ export default class ArtistBox extends Component {
             </View>
             <View style={styles.iconContainer}>
               <Icon name='ios-chatboxes-outline' type='ionicon' size={30} color="gray" />
-              <Text style={styles.count}>{comments}</Text>
+              <Text style={styles.count}>{commentCount}</Text>
+            </View>
+            <View style={styles.iconContainer}>
+              <TouchableOpacity onPress={this.handleShared}>
+                <Icon name='md-share' type='ionicon' size={30} color="gray" />
+              </TouchableOpacity>
+              <Text style={styles.count}>Shared</Text>
             </View>
           </View>
         </View>
