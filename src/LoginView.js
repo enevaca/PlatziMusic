@@ -29,6 +29,11 @@ export default class LoginView extends Component {
     isLoggedIn: false,
   }
 
+  constructor(props) {
+    super(props)
+    console.ignoredYellowBox = [ 'Setting a timer' ]
+  }
+
   createUser(email, password) {
     firebaseAuth.createUserWithEmailAndPassword(email, password).then(() => {
         // Sign-out successful.

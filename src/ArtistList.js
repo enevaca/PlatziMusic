@@ -35,6 +35,11 @@ export default class ArtistList extends Component {
     dataSource: this.props.artists
   }
 
+  constructor(props) {
+    super(props)
+    console.ignoredYellowBox = [ 'Setting a timer' ]
+  }
+
   componentWillReceiveProps(newProps) {
     if (newProps.artists !== this.props.artists) {
       this.updateDataSource(newProps.artists)

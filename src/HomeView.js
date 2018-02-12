@@ -19,6 +19,11 @@ export default class HomeView extends Component {
     artists: []
   }
 
+  constructor(props) {
+    super(props)
+    console.ignoredYellowBox = [ 'Setting a timer' ]
+  }
+
   componentDidMount() {
     getArtists().then(data => this.setState({ artists: data }))
   }

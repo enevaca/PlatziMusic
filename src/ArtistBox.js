@@ -20,6 +20,12 @@ export default class ArtistBox extends Component {
   state = {
     liked: false,
     likeCount: 0,
+    commentCount: 0,
+  }
+
+  constructor(props) {
+    super(props)
+    console.ignoredYellowBox = [ 'Setting a timer' ]
   }
 
   componentWillMount() {
