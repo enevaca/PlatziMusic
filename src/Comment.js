@@ -1,9 +1,16 @@
 import React from 'react';
-import { Text, StyleSheet, View } from 'react-native';
+import { Text, StyleSheet, View, Image } from 'react-native';
 
+const DEFAULT_AVATAR = "https://flipagram.com/assets/resources/img/fg-avatar-anonymous-user-retina.png"
+const AVATAR_SIZE = 32
 const Comment = (props) => 
 	<View style={styles.comment}>
-		<Text>{props.text}</Text>
+		{
+			props.avatar ?
+			<Image style={styles.avatar} source={{ uri: props.avatar }} /> :
+			<Image style={styles.avatar} source={{ uri: DEFAULT_AVATAR }} />
+		}
+		<Text style={styles.text}>{props.text}</Text>
 	</View>
 
 const styles = StyleSheet.create({
@@ -12,11 +19,18 @@ const styles = StyleSheet.create({
     padding: 10,
     margin: 5,
     borderRadius: 5,
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   text: {
+  	marginLeft: 10,
   	fontSize: 16,
-  	
-  }
+  },
+  avatar: {
+  	width: AVATAR_SIZE,
+  	height: AVATAR_SIZE,
+  	borderRadius: AVATAR_SIZE / 2 ,
+  },
 });
 
 

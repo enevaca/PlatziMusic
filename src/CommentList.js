@@ -43,7 +43,7 @@ export default class CommentList extends Component {
       <ListView 
         enableEmptySections={true}
         dataSource={this.state.dataSource}
-        renderRow={(comment) => <Comment text={comment.text} />}
+        renderRow={(comment) => <Comment text={comment.text} avatar={comment.userPhoto} />}
       />
     );
   }

@@ -33,9 +33,14 @@ export default class ArtistDetailView extends Component {
   handleSend = () => {
     const id = this.generateQuickGuid()
     const { text } = this.state
+    const { uid, photoURL } = firebaseAuth.currentUser
     const artistCommentsRef = this.getArtistCommentsRef()
     var newCommentRef = artistCommentsRef.push();
-    newCommentRef.set({ text });
+    newCommentRef.set({ 
+      text, 
+      userPhoto: 'https://lastfm-img2.akamaized.net/i/u/174s/9e26b6e7282d4c52cca398b28c7e57b5.png',
+      uid
+    });
     this.setState({ text: '' })
   }
 
