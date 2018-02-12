@@ -1,4 +1,4 @@
-package com.platzimusic;
+package enevaca.platzimusic;
 
 import com.facebook.react.ReactActivity;
 import com.oblador.vectoricons.VectorIconsPackage;
@@ -12,7 +12,7 @@ public class MainActivity extends ReactActivity {
      */
     @Override
     protected String getMainComponentName() {
-        return "PlatziMusic";
+        return "PlatziMusicN";
     }
 
     @Override

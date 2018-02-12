@@ -82,3 +82,8 @@ android.enableAapt2=false
 ± |master U:130 ?:1 ✗| → 
  2018-02-12 13:13:39 ⌚  noel-pc in ~/Documentos/platzi/PlatziMusic/android
 ± |master U:130 ?:1 ✗| → ./gradlew assembleRelease
+
+
+https://facebook.github.io/react-native/docs/signed-apk-android.html
+https://github.com/facebook/react-native/issues/5886
+https://medium.com/@applification/fixing-react-native-android-permissions-9e78996e9865

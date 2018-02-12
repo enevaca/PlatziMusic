@@ -1,4 +1,4 @@
-package com.platzimusic;
+package enevaca.platzimusic;
 
 import android.app.Application;
 
