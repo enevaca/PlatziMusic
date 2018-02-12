@@ -12,6 +12,8 @@ import {
   Text,
   Button,
   TextInput,
+  ImageBackground,
+  Image,
 } from 'react-native';
 /*import FBSDK, {
   LoginButton,
@@ -107,14 +109,14 @@ export default class LoginView extends Component {
           <TextInput style={styles.input}
              underlineColorAndroid = "transparent"
              placeholder = "Email"
-             placeholderTextColor = "#9a73ef"
+             placeholderTextColor = "white"
              autoCapitalize = "none"
              onChangeText = {this.handleEmail}
             />
           <TextInput style={styles.input}
              underlineColorAndroid = "transparent"
              placeholder = "Password"
-             placeholderTextColor = "#9a73ef"
+             placeholderTextColor = "white"
              autoCapitalize = "none"
              secureTextEntry={true}
              onChangeText = {this.handlePassword}
@@ -134,9 +136,12 @@ export default class LoginView extends Component {
     }
 
     return (
-      <View style={{flex: 1, backgroundColor: 'lightgray', justifyContent: 'center',}}>
+      <ImageBackground 
+        source={require('./background.jpg')}
+        style={{flex: 1, backgroundColor: 'lightgray', justifyContent: 'center',}}>
         <View style={styles.container}>
           <Text style={styles.welcome}>Bienvenidos a PlatziMusic</Text>
+          <Image source={require('./logo.png')} style={styles.logo} />
             {/*<LoginButton
             readPermissions={['publish_profile', 'email']}
             onLoginFinished={this.handelLoginFinished}
@@ -144,7 +149,7 @@ export default class LoginView extends Component {
           
         </View>
         { button }
-      </View>
+      </ImageBackground>
     );
   }
 
@@ -157,17 +162,22 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
   },
+  logo: {
+    width: 150,
+    height: 150,
+    marginBottom: 15,
+  },
   welcome: {
     fontSize: 24,
     fontWeight: '600',
     marginBottom: 20,
     backgroundColor: 'transparent',
-    color: 'black',
+    color: 'white',
   },
   input: {
       margin: 15,
       height: 40,
-      borderColor: '#7a42f4',
+      borderColor: 'white',
       borderWidth: 1
    },
 });
